@@ -91,7 +91,7 @@ class OptionsState extends MusicBeatState
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
-		bg.color = 0xFFea71fd;
+		bg.color = 0xFF0A1E3C; // Dark blue for Persona 3 Reload aesthetic
 		bg.updateHitbox();
 
 		bg.screenCenter();
@@ -158,7 +158,7 @@ class OptionsState extends MusicBeatState
 		if (controls.UI_DOWN_P)
 			changeSelection(1);
 
-		var lerpVal:Float = Math.max(0, Math.min(1, elapsed * 7.5));
+		var lerpVal:Float = Math.max(0, Math.min(1, elapsed * 9.0)); // Faster lerp for smoother transitions
 		camFollowPos.setPosition(635, FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 
 		var bullShit:Int = 0;
@@ -199,10 +199,10 @@ class OptionsState extends MusicBeatState
 		for (num => item in grpOptions.members)
 		{
 			item.targetY = num - curSelected;
-			item.alpha = 0.6;
+			item.alpha = 0.3; // Dimmer non-selected items
 			if (item.targetY == 0)
 			{
-				item.alpha = 1;
+				item.alpha = 1; // Bright selected item
 			}
 		}
 		FlxG.sound.play(Paths.sound('scrollMenu'));
